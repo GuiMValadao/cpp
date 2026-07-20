@@ -12,7 +12,9 @@ int main(void) {
     cin >> n;
     
     while (n > 0) {
-        if (n & 1)
+        // For counting zeros to the right of most significative bit
+        // can just use the negation operator, !(n & 1)
+        if (n & 1)     
             result++;
         n >>= 2;
     }
