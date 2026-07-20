@@ -39,9 +39,9 @@ int main(void) {
             }
         }
         // Compare tmp_val and bits and set ispalindrome to the answer
-        ispalindrome = tmp_val == reversed; 
+        
 	}
-
+ispalindrome = tmp_val == reversed; 
 
 	if(ispalindrome)
 		cout << val << " is a bitwise palindrome" << endl;
