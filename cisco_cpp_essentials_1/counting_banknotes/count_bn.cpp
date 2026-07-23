@@ -14,7 +14,6 @@ int main(void) {
         cout << "Invalid amount typed. No withdrawal done." << endl;
         return -1;
     }
-    
     for (int i = 0; i < 5; i++) {
         int current_value = note_values[i];
         while (money_amount >= current_value) {
