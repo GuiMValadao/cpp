@@ -1,0 +1,34 @@
+Pointer : aponta para o endereço na memória de uma variável. Declara-se como:
+
+int *ptr;
+
+onde `int *` indica que a variável ptr é um pointer.
+
+Não se deve atribuir valores diretamente a pointers pois não se sabe o que está armazenado
+na memória naquele lugar. Po exemplo, não se deve fazer algo como:
+
+ptr = 12345;
+
+No entanto, pode-se atribuir o valor 0, preferencialmente usando a macro NULL, que gerará
+um pointer do tipo vazio, da seguinte forma:
+
+ptr = 0; ou ptr = NULL;
+
+Para que o pointer de fato aponte um endereço na memória, deve-se utilizar o
+operador de referenciamento (&) e uma variável existente com um valor já atribuído:
+
+int i = 5;
+ptr = &i;
+
+Para se obter o valor da variável para a qual o pointer está apontando usa-se o
+operador de derreferenciamento (*):
+
+cout << *ptr;
+
+No entanto, caso se escreva algo como:
+
+*ptr = 3;
+
+Não se estará alterando o valor do pointer, mas o da variável para a qual o pointer estava apontando.
+
+!! Usar dereference on NULL pointers é estritamente proibido e pode levar a sérios problemas.
