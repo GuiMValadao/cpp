@@ -3,23 +3,19 @@
 using namespace std;
 int main(void) {
 
-    int variable, *ptr;
+    int matrix[3][3] = {};
+
+    // ptr points to the first element of the array
     
-    ptr = NULL;
-    cout << ptr << endl;
-
-    variable = 5;
-
-    ptr = &variable;
-    cout << ptr << " stores " << variable << endl; 
-    
-    cout << "dereferece : " << *ptr << endl;
-
-    cout << "changing the value the pointer is pointing declaring *ptr = 12" << endl;
-    *ptr = 12;
-
-    cout << "New value is " << *ptr << " and the variable now stores " << variable << endl;
-    cout << "The location is still " << ptr;
-    return 0;
+    for(int i = 0; i < 3; i++) {
+        int *ptr = matrix[i];
+		for(int j = 0; j < 3; j++) {
+            // Assigns to each element the value of i+1 * j + 1
+            *(ptr + j) = (i + 1) * (j + 1);
+            cout.width(4);
+			cout << matrix[i][j];
+        }
+        cout << endl;
+    }
 
 }
