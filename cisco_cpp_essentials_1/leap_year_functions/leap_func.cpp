@@ -2,11 +2,11 @@
 
 using namespace std;
 bool isLeap(int year) { 
-    bool answer = false;
+    
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-        answer = true;
+        return true;
     }
-    return answer;
+    return false;
 
 }
 
