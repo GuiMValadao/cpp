@@ -1,3 +1,8 @@
+/* One step further: finding the lengths of months
+Uses the isLeap function to flag if a year is leap and prints the amount of days each month in a year has.
+Accounts for leap years, resulting in 29 days for February if it is or 28 if not.
+*/
+
 #include <iostream>
 
 using namespace std;
