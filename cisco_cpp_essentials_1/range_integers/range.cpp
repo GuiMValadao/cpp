@@ -8,7 +8,7 @@ int main(void) {
     long long int result = 0, N;    // Windows's long is 32 bits. an alternative is using int32_t ou int64_t from <cstdint>
     std::cout << "The maximum number for the sum is ";
     std::cin >> N;
-    if (!(std::cin.good() || N < 100000)) {
+    if (!(std::cin.good())|| N > 100000 || N < 0 ) {
         std:: cout << "The value entered is invalid. Closing the program." << std::endl;
         return 1;
     }
