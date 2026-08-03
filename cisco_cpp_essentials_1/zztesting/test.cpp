@@ -1,14 +1,15 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
+
 int main(void) {
 
-    int matrix[3] = {1, 2, 3};
-    int *pt = matrix + 1;
-    // ptr points to the first element of the array
-    
-    
-        cout << pt[-1] << endl;
+    string x = "0123";   
+    for (int i = 0; i < x.size(); i++) {
+        bool ans = x[i] == (i+48);
+        cout << ans << endl;
+    }
     
 
 }
