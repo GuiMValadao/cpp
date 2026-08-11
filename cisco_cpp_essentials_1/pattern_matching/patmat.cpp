@@ -33,17 +33,24 @@ void AddToCollection(Collection &col, std::string element) {
 	}
 }
 
-void PrintCollection(Collection col) {
+void PrintCollection(Collection &col) {
 	for(int i = 0; i < col.elno; i++)
 		std::cout << col.elements[i] << std::endl;
 }
 
+void DeleteCollection(Collection &col) {
+    if (col.elno == 0) {
+        return;
+    }
+    delete[] col.elements;
+}
+
 bool check(char sentence_char, char pattern_char) {
-    if (tolower(sentence_char) == tolower(pattern_char)) {
-        return true;
-    } else if (pattern_char == 'D' && isdigit(sentence_char)) {
+    if (pattern_char == 'D' && isdigit(sentence_char)) {
         return true;
     } else if (pattern_char == 'A' && isalpha(sentence_char)) {
+        return true;
+    } else if (tolower(sentence_char) == tolower(pattern_char)) {
         return true;
     } else if (pattern_char == '?') {
         return true;
@@ -51,43 +58,39 @@ bool check(char sentence_char, char pattern_char) {
     return false;
 }
 
-int main()
-{
+int main(void) {
     std::string pattern;
     std::getline(std::cin, pattern);
 
     std::string sentence;
     std::getline(std::cin, sentence);
     // match pattern against sentence
-    std::string results, word;
     Collection result = {0, NULL};
     size_t pattern_size = pattern.length();
     size_t sentence_size = sentence.length();
-    bool match = false, end_sentence = false;
-    for(int i = 0; i < sentence_size; i++) {
+    if(pattern_size == 0 || sentence_size == 0 ) {
+        return 0;
+    }
+
+    for(size_t i = 0; i < sentence_size; i++) {
+        size_t position = i;
         for(char c : pattern) {
-            if(check(sentence[i], c)) {
-                word += sentence[i];
-                i++;    //Increments i to check against the pattern
-                if(i == sentence_size) {    // Avoids surpassing the length of the sentence
-                    end_sentence = true;
+            if(check(sentence[position], c)) {
+                position++;
+                if(position == sentence_size) {    // Avoids surpassing the length of the sentence
                     break; 
                 }
             } else {
-                i -= word.length(); // Clears the word and breaks the current loop check. Is it necessary to reset i here?
-                word.clear();
                 break;
             }
         }
-        size_t word_size = word.length();
-        if ( word_size == pattern_size) {
-            AddToCollection(result, word);
-            i -= word_size;
-            word.clear();
+        if ((position - i) == pattern_size) {
+            AddToCollection(result, sentence.substr(i, position - i));
         }
     }
     PrintCollection(result);
-
+    DeleteCollection(result);
+    return 0;
 }
 
 // --------------------------------------------------------------------------
